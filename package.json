@@ -2,15 +2,16 @@
   "name": "xeno",
   "version": "1.0.0",
   "main": "webhook-server.js",
+  "description": "Backend service for Xeno Shopify ingestion and webhooks",
   "scripts": {
     "start": "node webhook-server.js",
     "dev": "nodemon webhook-server.js",
-    "build": "echo 'No build step required'"
+    "build": "echo 'No build step required'",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@prisma/client": "^6.15.0",
     "axios": "^1.11.0",
