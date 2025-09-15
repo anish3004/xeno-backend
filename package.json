@@ -7,8 +7,10 @@
     "start": "node webhook-server.js",
     "dev": "nodemon webhook-server.js",
     "build": "echo 'No build step required'",
+    "sync": "node sync-shopify.js",
     "postinstall": "prisma generate && npm run sync"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
