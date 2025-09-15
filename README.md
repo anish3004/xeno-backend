@@ -15,7 +15,7 @@ Node.js + Express backend that ingests Shopify events (webhooks + sync), saves t
 ## .env example
 SHOP_NAME=anish-retail
 SHOPIFY_ADMIN_TOKEN=shpat_XXXXXXXXXXXXXXXX
-DATABASE_URL="postgresql://neondb_owner:password@ep-xxxx-pooler.region.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL="db_url"
 
 ## Endpoints
 - POST /webhook/cart
