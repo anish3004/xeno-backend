@@ -7,7 +7,7 @@
     "start": "node webhook-server.js",
     "dev": "nodemon webhook-server.js",
     "build": "echo 'No build step required'",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate && npm run sync"
   },
   "keywords": [],
   "author": "",
