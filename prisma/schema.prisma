@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id        String     @id @default(cuid())
+  shopifyId String     @unique
+  title     String
+  vendor    String?
+  price     Float
+  createdAt DateTime   @default(now())
+  storeId   String?
+  orders    OrderItem[]
+}
+
+model Customer {
+  id        String     @id @default(cuid())
+  shopifyId String     @unique
+  firstName String
+  lastName  String
+  email     String     @unique
+  createdAt DateTime   @default(now())
+  storeId   String?
+  orders    Order[]
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  shopifyId  String      @unique
+  createdAt  DateTime
+  totalPrice Float
+  storeId    String?
+  customer   Customer?   @relation(fields: [customerId], references: [id])
+  customerId String?
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  price     Float
+  storeId   String?
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+}
+
+model CustomEvent {
+  id        String   @id @default(cuid())
+  type      String
+  payload   Json
+  createdAt DateTime @default(now())
+  storeId   String?
+}
